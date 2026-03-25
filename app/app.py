@@ -207,8 +207,6 @@ if st.button("🔮 Predict Outcome"):
         insights.append("Internship experience is a strong advantage")
 
     insight_text = "<br>".join(insights[:3]) if insights else "No strong signals detected"
-
-    # -------- RESULT CARD --------
     st.markdown(
         f"""
         <div class="result-card">
