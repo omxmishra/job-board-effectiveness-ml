@@ -3,20 +3,17 @@ import os
 import pandas as pd
 import streamlit as st
 
-# ---------------- PATH FIX ----------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(BASE_DIR, "..", "src"))
 
 from feature_engineering import predict
 
-# ---------------- PAGE CONFIG ----------------
 st.set_page_config(
     page_title="Job Offer Predictor",
     page_icon="🚀",
     layout="wide"
 )
 
-# ---------------- FINAL UI ----------------
 st.markdown("""
 <style>
 
@@ -50,15 +47,7 @@ st.markdown("""
     margin-bottom: 35px;
 }
 
-/* ===== CARDS ===== */
-.card {
-    background: rgba(15, 23, 42, 0.85);
-    padding: 24px;
-    border-radius: 18px;
-    border: 1px solid rgba(20,184,166,0.15);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    margin-bottom: 20px;
-}
+
 
 /* ===== SECTION ===== */
 .section-title {
@@ -130,14 +119,11 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ---------------- HEADER ----------------
 st.markdown('<div class="title">🧑🏻‍💻💼 JOB OFFER PREDICTOR</div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">AI-powered prediction based on student profile & job search behavior</div>', unsafe_allow_html=True)
 
-# ---------------- LAYOUT ----------------
 left, right = st.columns([1.1, 1])
 
-# -------- LEFT --------
 with left:
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.markdown('<div class="section-title">🎓 Academic Profile</div>', unsafe_allow_html=True)
@@ -152,7 +138,6 @@ with left:
 
     st.markdown('</div>', unsafe_allow_html=True)
 
-# -------- RIGHT --------
 with right:
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.markdown('<div class="section-title">📈 Job Search Behavior</div>', unsafe_allow_html=True)
@@ -165,7 +150,6 @@ with right:
 
     st.markdown('</div>', unsafe_allow_html=True)
 
-# ---------------- PREDICTION ----------------
 if st.button("🔮 Predict Outcome"):
 
     input_data = pd.DataFrame([{
@@ -185,7 +169,6 @@ if st.button("🔮 Predict Outcome"):
     pred, prob = predict(input_data)
     confidence = prob[0] * 100
 
-    # -------- INSIGHTS --------
     insights = []
 
     if GPA >= 3.5:
